@@ -1,0 +1,65 @@
+// Main CSS File
+$color-primary: #5e3b59;
+$color-white: #fff;
+$color-black: #000;
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  padding: 2rem;
+}
+
+main {
+  height: 100vh;
+}
+
+.header {
+  padding: 3rem;
+  height: 45vh;
+  background-color: $color-primary;
+  color: $color-white;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 60%, 0 90%);
+  clip-path: polygon(0 0, 100% 0, 100% 60%, 0 90%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  @media (max-width: 992px) {
+    height: 30vh;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  &__name {
+    font-size: 2.4rem;
+  }
+  &__title {
+    font-size: 1.4rem;
+  }
+}
+
+// About
+.about-section {
+  max-width: 1140px;
+  margin: 0 auto;
+  &__title {
+    text-align: center;
+    font-size: 2.2rem;
+  }
+  &__content {
+    font-size: 1.8rem;
+  }
+}
+
+// Skills
+.skills {
+  &__list {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: center;
+    &--item {
+      display: inline-block;
+    }
+    &--item:not(:last-child) {
+      margin-right: 3rem;
+    }
+  }
+}
