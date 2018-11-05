@@ -1,5 +1,7 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
 sass.compiler = require('node-sass');
 
 const browserSync = require('browser-sync').create();
@@ -13,9 +15,13 @@ gulp.task('copy:css', () => {
 
 // Compile Sass task
 gulp.task('compile:sass', () => {
+  const plugins = [
+    autoprefixer({ grid: true })
+  ]
   return gulp
     .src('src/scss/main.scss')
     .pipe(sass.sync({ outputStyle: 'compressed' }).on('error', sass.logError))
+    .pipe(postcss(plugins))
     .pipe(gulp.dest('src/css'));
 });
 
