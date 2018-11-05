@@ -17,22 +17,38 @@ main {
 
 .header {
   padding: 3rem;
-  height: 45vh;
+  height: 40vh;
+  min-height: 30rem;
   background-color: $color-primary;
   color: $color-white;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 60%, 0 90%);
-  clip-path: polygon(0 0, 100% 0, 100% 60%, 0 90%);
+  position: relative;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  &__name {
+    font-size: 3.2rem;
+  }
+  &__title {
+    font-size: 2.2rem;
+  }
+  &__container {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+
+    @media (max-width: 992px) {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 85%;
+      max-width: 100%;
+    }
+  }
+
   @media (max-width: 992px) {
     height: 30vh;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-  &__name {
-    font-size: 2.4rem;
-  }
-  &__title {
-    font-size: 1.4rem;
   }
 }
 
