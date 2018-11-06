@@ -10,7 +10,7 @@ const browserSync = require('browser-sync').create();
 gulp.task('copy:css', () => {
   return gulp
     .src('node_modules/normalize.css/normalize.css')
-    .pipe(gulp.dest('src/css'));
+    .pipe(gulp.dest('public/css'));
 });
 
 // Compile Sass task
@@ -19,10 +19,10 @@ gulp.task('compile:sass', () => {
     autoprefixer({ grid: true })
   ]
   return gulp
-    .src('src/scss/main.scss')
+    .src('public/scss/main.scss')
     .pipe(sass.sync({ outputStyle: 'compressed' }).on('error', sass.logError))
     .pipe(postcss(plugins))
-    .pipe(gulp.dest('src/css'));
+    .pipe(gulp.dest('public/css'));
 });
 
 // Serve task
@@ -32,7 +32,7 @@ gulp.task('serve', ['compile:sass'], function() {
   });
 
   gulp
-    .watch(['src/scss/**/*.scss', 'src/css/**/*.css'], ['compile:sass'])
+    .watch(['public/scss/**/*.scss', 'public/css/**/*.css'], ['compile:sass'])
     .on('change', browserSync.reload);
   gulp.watch('./*.html').on('change', browserSync.reload);
 });
