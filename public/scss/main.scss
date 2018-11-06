@@ -119,7 +119,36 @@ body {
 // Footer
 .footer {
   background: $color-background;
-  padding: 5rem;
+  padding: 3rem;
+}
+
+.footer-social {
+  &__title {
+    color: $color-white;
+    font-size: 3.4rem;
+    text-align: center;
+    margin-top: 0;
+  }
+  &__list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-left: 0;
+    height: 100%;
+    max-width: 20%;
+    margin: 0 auto;
+    &--link {
+      display: block;
+      @media (max-width: 768px) {
+        margin-bottom: 1.5rem;
+      }
+    }
+    &--item {
+      display: block;
+    }
+  }
 }
 
 // Tail
