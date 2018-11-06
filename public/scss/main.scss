@@ -106,6 +106,13 @@ body {
       padding: 2rem;
       display: flex;
     }
+    &--img {
+      filter: grayscale(100%);
+      transition: filter 0.4s ease-in-out;
+      &:hover {
+        filter: grayscale(0%);
+      }
+    }
   }
 }
 
