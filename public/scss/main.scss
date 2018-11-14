@@ -75,6 +75,9 @@ body {
 .about-section {
   max-width: 1140px;
   margin: 0 auto 3rem auto;
+  &__text {
+    padding: 0 3rem;
+  }
   &__title {
     text-align: center;
     font-size: 3rem;
@@ -85,9 +88,6 @@ body {
   }
   &__name {
     font-size: 3.2rem;
-  }
-  @media (max-width: 992px) {
-    padding: 0 2rem;
   }
 }
 
@@ -102,13 +102,20 @@ body {
     padding-left: 0;
     height: 100%;
     width: 100%;
+    text-align: center;
     &--item {
-      padding: 2rem;
+      margin-bottom: 3rem;
       display: flex;
+      flex-grow: 1;
+      flex: 1 1 33.33333%;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
     }
     &--img {
       filter: grayscale(100%);
       transition: filter 0.4s ease-in-out;
+      padding: 2rem;
       &:hover {
         filter: grayscale(0%);
       }
@@ -165,7 +172,10 @@ body {
     text-decoration: none;
     color: firebrick;
   }
-  span {
-    cursor: pointer;
+  .heart-icon {
+    width: 15px;
+    height: 15px;
+    vertical-align: bottom;
+    transform: rotateZ(-90deg);
   }
 }
