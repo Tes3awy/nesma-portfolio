@@ -15,9 +15,7 @@ gulp.task('copy:css', () => {
 
 // Compile Sass task
 gulp.task('compile:sass', () => {
-  const plugins = [
-    autoprefixer({ grid: true })
-  ]
+  const plugins = [autoprefixer({ grid: true })];
   return gulp
     .src('public/scss/main.scss')
     .pipe(sass.sync({ outputStyle: 'compressed' }).on('error', sass.logError))
@@ -28,11 +26,16 @@ gulp.task('compile:sass', () => {
 // Serve task
 gulp.task('serve', ['compile:sass'], function() {
   browserSync.init({
-    server: './'
+    watch: true,
+    server: './',
+    browser: 'google chrome',
+    watchOptions: {
+      ignored: '.gitignore'
+    }
   });
 
   gulp
-    .watch(['public/scss/**/*.scss', 'public/css/**/*.css'], ['compile:sass'])
+    .watch('public/scss/**/*.scss', ['compile:sass'])
     .on('change', browserSync.reload);
   gulp.watch('./*.html').on('change', browserSync.reload);
 });
