@@ -2,14 +2,19 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
+const minify = require('gulp-minify-css');
 sass.compiler = require('node-sass');
 
 const browserSync = require('browser-sync').create();
+
+const rename = require("gulp-rename");
 
 // Copy CSS files task
 gulp.task('copy:css', () => {
   return gulp
     .src('node_modules/normalize.css/normalize.css')
+    .pipe(minify())
+    .pipe(rename("normalize.min.css"))
     .pipe(gulp.dest('public/css'));
 });
 
@@ -20,6 +25,7 @@ gulp.task('compile:sass', () => {
     .src('public/scss/main.scss')
     .pipe(sass.sync({ outputStyle: 'compressed' }).on('error', sass.logError))
     .pipe(postcss(plugins))
+    .pipe(rename("main.min.css"))
     .pipe(gulp.dest('public/css'));
 });
 
@@ -28,9 +34,8 @@ gulp.task('serve', ['compile:sass'], function() {
   browserSync.init({
     watch: true,
     server: './',
-    browser: 'google chrome',
     watchOptions: {
-      ignored: '.gitignore'
+      ignored: ['gulpfile.js', 'package.json', 'npm-shrinkwrap.json', 'README.md', 'LICENSE', 'robots.txt', '.gitignore']
     }
   });
 

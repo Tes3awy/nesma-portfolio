@@ -1,1 +1,1 @@
-console.log('App.js');
+console.log('%cBelieve me, there is nothing important here for you 😜!','color: #7c276f; font-family: sans-serif; font-size: 3em; font-weight: bolder; text-shadow: #232323 1px 1px 1px;');

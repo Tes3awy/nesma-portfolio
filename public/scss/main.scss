@@ -1,9 +1,10 @@
 // Main CSS File
-$color-primary: #7c276f;
-$color-secondary: #30162c;
-$color-white: #fff;
-$color-black: #000;
-$color-background: linear-gradient(45deg, $color-primary, $color-secondary);
+@import "variables";
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}
 
 html {
   font-size: 62.5%;
@@ -11,7 +12,7 @@ html {
 
 body {
   padding: 3rem;
-  font-family: europa, sans-serif;
+  font-family: 'europa', sans-serif;
   box-sizing: border-box;
 }
 
@@ -88,6 +89,9 @@ body {
   }
   &__name {
     font-size: 3.2rem;
+    &--fname {
+      color: $color-primary;
+    }
   }
 }
 
