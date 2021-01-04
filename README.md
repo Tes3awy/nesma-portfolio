@@ -4,8 +4,8 @@
 
 ## Table of Contents
 
-1. [Preview](##preview)
-2. [Changelog](##changelog)
+1. [Preview](#preview)
+2. [Changelog](#changelog)
 
 ---
 
