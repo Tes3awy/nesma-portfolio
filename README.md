@@ -11,7 +11,7 @@
 
 ## Preview
 
-![Preview](Nesma-Hesham-Portfolio.jpg)
+![Preview](preview.jpg)
 
 ---
 
@@ -33,3 +33,9 @@
 2. Added `gulp-htmlmin` to minify `html` file.
 3. Added `index.app.html` to be the src file, and `index.html` to be the minified version.
 4. Added a Preview.
+
+**05 January 2021**
+
+1. Added `gulp-concat-css`.
+2. Updated Gulp tasks.
+3. Added more meta tags.
