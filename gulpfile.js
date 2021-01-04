@@ -9,6 +9,8 @@ const browserSync = require('browser-sync').create();
 
 const rename = require("gulp-rename");
 
+const htmlmin = require('gulp-htmlmin');
+
 // Copy CSS files task
 gulp.task('copy:css', () => {
   return gulp
@@ -29,8 +31,16 @@ gulp.task('compile:sass', () => {
     .pipe(gulp.dest('public/css'));
 });
 
+// Minify HTML Task
+gulp.task('minify-html', () => {
+  return gulp.src('./index.app.html')
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(rename("index.html"))
+    .pipe(gulp.dest('./'));
+});
+
 // Serve task
-gulp.task('serve', ['compile:sass'], function() {
+gulp.task('serve', ['compile:sass', 'minify-html'], function() {
   browserSync.init({
     watch: true,
     server: './',
@@ -39,12 +49,11 @@ gulp.task('serve', ['compile:sass'], function() {
     }
   });
 
-  gulp
-    .watch('public/scss/**/*.scss', ['compile:sass'])
-    .on('change', browserSync.reload);
-  gulp.watch('./*.html').on('change', browserSync.reload);
+  gulp.watch('public/scss/**/*.scss', ['compile:sass']).on('change', browserSync.reload);
+  gulp.watch('./*.app.html', ['minify-html']).on('change', browserSync.reload);
 });
 
 // Default task
-gulp.task('default', ['copy:css']);
-console.log(require('node-sass').info);
+gulp.task('default', ['copy:css'], () => {
+  console.log(sass.compiler.info);
+});
